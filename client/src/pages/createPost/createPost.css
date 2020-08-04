@@ -1,0 +1,14 @@
+.post-container{
+    display: flex;
+    flex-direction: column;
+    width: 80vw; 
+    margin: 32px auto;
+}
+
+#title{
+    text-align: center;
+}
+
+#spacing{
+    margin: 8px;;
+}

@@ -1,0 +1,27 @@
+.blog-container{
+    padding: 0px;
+    margin: 32px auto;
+    width: 40vw;
+    box-shadow: 2px 2px 8px .25px #888888;
+    border-radius: 5px;
+}
+.blog-titles{
+    text-align: center;
+    padding: 0px;
+    margin: 8px;
+}
+.container-account{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-comment{
+    text-align: center;
+}
+
+#home-title{
+    margin: 24px auto 0 auto;
+    text-align: center;
+}
