@@ -5,20 +5,68 @@
     box-shadow: 2px 2px 8px .25px #888888;
     border-radius: 5px;
 }
-.blog-titles{
-    text-align: center;
-    padding: 0px;
-    margin: 8px;
+
+#blog-post{
+    display: flex;
+    grid-template-columns: 40% 50%;
+    grid-template-rows: 50% 50%;
 }
+.blog-img{
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 150px;
+    padding: 8px;
+    margin: 12px;
+}
+.blog-text{
+    display: grid;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+}
+
+
+.blog-titles{
+    text-align: left;
+    padding-left: 24px;
+    border: 1px solid black;
+    margin: 4px;
+    align-self: flex-end;
+}
+.blog-subText{
+    display: flex;
+    border: 1px solid black;
+    flex-direction: row;
+    align-content: flex-end;
+    align-items: flex-start;
+    padding-left: 24px;
+    margin: 4px;
+    height: auto;
+}
+
 .container-account{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
+    padding-right: 8px;
+    margin: 8px;
 }
+.container-account > p{
+    align-self: flex-start;
+    margin: 0 0 0 8px;;
+    padding: 0;
+}
+#vr{
+    border-right: 1px solid grey;
+    height: 12px;
+    margin-top: 12px;
 
-.container-comment{
-    text-align: center;
+    ;
+}
+.blog-subText > p{
+    margin: 8px 0 0 0;
+    padding: 0 0 0 16px;
 }
 
 #home-title{

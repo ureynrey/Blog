@@ -16,7 +16,7 @@ router.post('/new', auth, async (req, res) => {
         'title': req.body.title,
         'owner': req.user._id,
         'author': `${req.user.firstName} ${req.user.lastName}`,
-        'body': `${req.body.body}`
+        'body': `${req.body.body}`,
     });
     try {
         await blog.save();

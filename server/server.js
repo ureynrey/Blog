@@ -6,6 +6,7 @@ const express = require("express");
 const cors = require("cors")
 const app = express();
 const port = process.env.PORT || 8080;
+const moment = require('moment')
 
 require('dotenv').config()
 require('../database/mongoose')
@@ -19,11 +20,6 @@ app.use(cors())
 app.use('/user', userRouter)
 app.use('/blog', blogRouter)
 
-
-
-
-
-
 if(process.env.NODE_ENV === 'production') {
     // Serve any static files
     app.use(express.static(path.join(__dirname, '../client/build')));
@@ -32,6 +28,8 @@ if(process.env.NODE_ENV === 'production') {
         response.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
 }
+
+
 
 
 app.listen( port, () => {
