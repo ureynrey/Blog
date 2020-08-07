@@ -4,14 +4,27 @@ import App from './App';
 import { StyleContextProvider } from './context/StyleContext'
 import * as serviceWorker from './serviceWorker';
 import { UserContextProvider } from './context/UserContext';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#CCCCCC"
+    }
+  }
+})
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserContextProvider>
-    <StyleContextProvider>
-      <App />
-    </StyleContextProvider>
-    </UserContextProvider>
+    <ThemeProvider theme={theme}>
+      <UserContextProvider>
+        <StyleContextProvider>
+          <App />
+        </StyleContextProvider>
+      </UserContextProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

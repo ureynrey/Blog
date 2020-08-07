@@ -4,6 +4,7 @@ import { AccountCircle } from '@material-ui/icons'
 import { UserContext } from '../../context/UserContext'
 import { useHistory } from 'react-router-dom'
 import Nav  from '../../components/Nav'
+import Footer from '../../components/Footer'
 import axios from 'axios'
 import moment from 'moment'
 import './home.css'
@@ -74,6 +75,8 @@ const Home = () => {
                 </Container>
             </div>
             ))}
+            <Footer />
+
         </div>
     )
 }

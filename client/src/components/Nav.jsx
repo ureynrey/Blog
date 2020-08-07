@@ -33,12 +33,13 @@ const Nav = () => {
 
     return (
         <div>
-        <AppBar position="static">
+        <AppBar >
         <Toolbar className={nav.root} variant="dense">
             <Typography 
                 variant="h6" 
                 noWrap
                 onClick={() => history.push('/')}
+                style={{ cursor:"pointer"}}
             >
                     BlogMe.com
             </Typography>
@@ -48,6 +49,8 @@ const Nav = () => {
                 { (Boolean(!authorToken) && token) ?   <LogOutButton />: '' }
         </Toolbar>
         </AppBar>
+        <Toolbar />
+
         </div>
     )
 }
