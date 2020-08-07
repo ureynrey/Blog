@@ -17,10 +17,20 @@ const StyleContextProvider = (props) => {
         },
     });
 
+    const useStyle = makeStyles( (theme) => ({
+        footer: {
+            bottom: 0,
+            top: 'auto',
+            position: 'relative'
+        },
+    }));
+
+
+
     return(
         <StyleContext.Provider
             value={{
-                buttonsStyle
+                buttonsStyle, useStyle
             }}
         >
             {props.children} 

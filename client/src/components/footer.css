@@ -1,0 +1,52 @@
+.footer{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px 0 40px 0;
+}
+
+.fotoer > h1{
+    border: 1px solid black;
+}
+
+.footer-self{
+    display: flex;
+}
+
+.footer-self > div{
+    margin: 16px;
+    position: relative;
+}
+
+.footer-self > div > img{
+    width: 150px;
+    border: 1px dashed black;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.footer-self > div > img:hover{
+    opacity: .5;
+    cursor: pointer;
+}
+
+.footer-self > div > h1{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    z-index: -5;
+    color: black;
+
+}
+
+.footer-sitemap{
+    border: 1px solid black;
+    list-style-type: none;
+    font-size: 1.5rem;;
+}
+.footer-sitemap > li > a:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    width: 100%;
+}

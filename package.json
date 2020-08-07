@@ -1,5 +1,5 @@
 {
-  "name": "wynChallenge",
+  "name": "Blog",
   "version": "1.0.0",
   "main": "server.js",
   "repository": "https://github.com/ghostkid130/Wynblogs.git",
@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
     "mongoose": "^5.9.20",
     "validator": "^13.1.1"
   }

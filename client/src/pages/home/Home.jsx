@@ -4,19 +4,31 @@ import { AccountCircle } from '@material-ui/icons'
 import { UserContext } from '../../context/UserContext'
 import { useHistory } from 'react-router-dom'
 import Nav  from '../../components/Nav'
+import Footer from '../../components/Footer'
 import axios from 'axios'
+import moment from 'moment'
 import './home.css'
 
 const Home = () => {
     const [ blogs, setBlogs ] = useState([])
     const { setBlogEntry } = useContext(UserContext)
+    const [ blogPostStyle ] = useState({
+        display: "grid",
+        gridTemplateRows: "50% 50%",
+        gridTemplateColumns: "50% 50%"
+
+    })
     let history = useHistory()
 
     useEffect(()=> {
         axios({ 
             method: "GET",
             url:'/blog/all'
-        }).then(x => { setBlogs(x.data)}
+        }).then(x => { 
+            setBlogs(x.data)
+            console.log(x.data)
+        
+        }
         ).catch(e => console.log(e.message))
     },[])
 
@@ -30,6 +42,7 @@ const Home = () => {
             history.push(`/blog/${id}`)
         }).catch(e => console.log(e))
     }
+    
 
     return (
         <div>
@@ -41,16 +54,29 @@ const Home = () => {
                     max-width="md" 
                     key={item._id}
                     onClick={() => handlePostClick(item._id)}
+                    id="blog-post"
                 >
-                    <h1 className="blog-titles">{item.title}</h1>
-                    <div className="container-account" >
-                        <AccountCircle />
-                        <p>{item.author}</p>
+                    <img 
+                        src="https://picsum.photos/200/200"
+                        className="blog-img"
+                    />
+                    <div className="blog-text">                    
+                        <h1 className="blog-titles">{item.title}</h1>
+                        <div className="blog-subText">
+                            <div className="container-account" >
+                                <AccountCircle />
+                                <p>{item.author}</p>
+                            </div>
+                            <span id="vr"/>
+                            <p>Posted: {moment(item.date).format('ll')}</p>
+                        </div>
+                        
                     </div>
-                    <p className="container-comment">Comment: {item.comments.length}</p> 
                 </Container>
             </div>
             ))}
+            <Footer />
+
         </div>
     )
 }
