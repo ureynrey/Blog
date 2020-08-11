@@ -12,12 +12,6 @@ import './home.css'
 const Home = () => {
     const [ blogs, setBlogs ] = useState([])
     const { setBlogEntry } = useContext(UserContext)
-    const [ blogPostStyle ] = useState({
-        display: "grid",
-        gridTemplateRows: "50% 50%",
-        gridTemplateColumns: "50% 50%"
-
-    })
     let history = useHistory()
 
     useEffect(()=> {
@@ -25,9 +19,7 @@ const Home = () => {
             method: "GET",
             url:'/blog/all'
         }).then(x => { 
-            setBlogs(x.data)
-            console.log(x.data)
-        
+            setBlogs(x.data)        
         }
         ).catch(e => console.log(e.message))
     },[])
@@ -59,6 +51,7 @@ const Home = () => {
                     <img 
                         src="https://picsum.photos/200/200"
                         className="blog-img"
+                        alt={item.title}
                     />
                     <div className="blog-text">                    
                         <h1 className="blog-titles">{item.title}</h1>

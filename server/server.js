@@ -6,7 +6,6 @@ const express = require("express");
 const cors = require("cors")
 const app = express();
 const port = process.env.PORT || 8080;
-const moment = require('moment')
 
 require('dotenv').config()
 require('../database/mongoose')
@@ -28,9 +27,6 @@ if(process.env.NODE_ENV === 'production') {
         response.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
 }
-
-
-
 
 app.listen( port, () => {
     console.log(`Express server is up on port ${port}`)

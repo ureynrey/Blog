@@ -1,3 +1,10 @@
 .authBtn-container > Button{
     margin: 0 24px;
 }
+
+#search-input{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}

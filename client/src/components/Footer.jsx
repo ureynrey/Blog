@@ -17,20 +17,25 @@ const Footer = () => {
                 <h1>L O G O.</h1>
 
                 <div className="footer-self">
-                    <h1></h1>
                     <div>
-                        <img src={rey} />
+                        <img 
+                            src={rey} 
+                            alt="Author: Reynold"
+                        />
                         <h1>Rey</h1>
                     </div>
                     <div>
-                        <img src={travis}/>
+                        <img 
+                            src={travis}
+                            alt="Author: Travis"
+                        />
                         <h1>Travis</h1>
                     </div>
                 </div>
 
                 <ul className="footer-sitemap">
-                    <li> <a>About       </a> </li>
-                    <li> <a>Newsletter  </a> </li>
+                    <li> <a href='#'>About       </a> </li>
+                    <li> <a href='#'>Newsletter  </a> </li>
                     
                 </ul>
 

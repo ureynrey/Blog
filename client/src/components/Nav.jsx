@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react'
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { UserContext } from '../context/UserContext'
-
+import React, { useState, useContext } from 'react'
+import { AppBar, Toolbar, Typography, InputBase, makeStyles} from '@material-ui/core'
+import MuiAccordion from '@material-ui/core/Accordion';
+import SearchIcon from '@material-ui/icons/Search';
+// import { makeStyles } from '@material-ui/core/styles'
 import './nav.css'
+
 import { useHistory } from 'react-router-dom'
-import AuthorButton from './AuthorButton'
-import LogOutButton from './LogOutButton'
-import LoginButtons from './LoginButtons'
+import axios from 'axios'
+import { UserContext } from '../context/UserContext';
 
 const navStyle = makeStyles({
     root: {
@@ -21,15 +21,25 @@ const navStyle = makeStyles({
 
 const Nav = () => {
     let history = useHistory();
-    const { setAuthorToken, token, authorToken, setToken } = useContext(UserContext)
+    const { useSearch, setUserSearch } = useContext(UserContext)
+    const [ searchField, setSearchField ] = useState('')
     const nav = navStyle()
 
-    useEffect(() => {
-        if(token){
-            setAuthorToken(() => localStorage.getItem('author'))
-            setToken(() => localStorage.getItem('token'))
-        }
-    }, [token, setAuthorToken, setToken])
+
+
+    const onChange = (e) => {
+        e.preventDefault(); 
+        setSearchField(e.target.value)
+        axios.get(`/blog/locate/${e.target.value}`)
+            .then(data => console.log(data))
+            .catch(e => console.warn(e))
+    } 
+
+    const onSubmit = (e) => {
+
+        e.preventDefault()
+        console.log('Hello2')
+    }
 
     return (
         <div>
@@ -43,10 +53,24 @@ const Nav = () => {
             >
                     BlogMe.com
             </Typography>
+                <MuiAccordion>
+                    <form 
+                        noValidate
+                        id="search-input" 
+                    >
+                        <SearchIcon />
+                        <InputBase 
+                            placeholder="Search..."
+                            onChange={e => onChange(e)}
+                            onSubmit={e => onSubmit(e)}
+                            />
+                    </form>
+                   
+                </MuiAccordion>
                 {/* Handles Login Button Renders*/}
-                { Boolean(!token)    ?  <LoginButtons /> : '' }
-                { (Boolean(authorToken)  && token)?  <AuthorButton/>  : '' }
-                { (Boolean(!authorToken) && token) ?   <LogOutButton />: '' }
+            
+                
+
         </Toolbar>
         </AppBar>
         <Toolbar />
