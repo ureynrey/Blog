@@ -123,6 +123,31 @@ router.patch('/edit/:id', auth, async (req,res) => {
     }
 })
 
+/*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/|
+- S E A R C H    F O R   A R T I C L E S   - |   
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+
+// Returns title and post._id
+router.get('/locate/:key', async (req, res) => {
+    console.log('hit')
+    const reply = []
+    try{
+        const blog = await Blog.find( 
+            //Partial Find using regEX
+            //$options ignores capitilization
+            { title: { $regex: `${req.params.key}`, $options:"i" } },
+            (err, data) => data.forEach( item => {
+                let carrier = {}
+                carrier.title = item.title;
+                carrier._id = item._id;
+                reply.push(carrier)
+            }))
+        if(!blog.length){ res.send(404).send() }
+        else res.send(reply)
+    } catch (e){
+        res.status(500).send()
+    }
+})
 
 
 

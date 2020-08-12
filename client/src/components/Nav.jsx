@@ -1,13 +1,11 @@
-import React, { useContext, useEffect } from 'react'
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { UserContext } from '../context/UserContext'
-
+import React, { useState, useEffect } from 'react'
+import { AppBar, Toolbar, Typography, InputBase, makeStyles} from '@material-ui/core'
+// import { makeStyles } from '@material-ui/core/styles'
 import './nav.css'
+
 import { useHistory } from 'react-router-dom'
-import AuthorButton from './AuthorButton'
-import LogOutButton from './LogOutButton'
-import LoginButtons from './LoginButtons'
+
+import SearchBar from './SearchBar'
 
 const navStyle = makeStyles({
     root: {
@@ -21,16 +19,13 @@ const navStyle = makeStyles({
 
 const Nav = () => {
     let history = useHistory();
-    const { setAuthorToken, token, authorToken, setToken } = useContext(UserContext)
     const nav = navStyle()
+    const [ token, setToken ] = useState(localStorage.getItem('token') )
 
-    useEffect(() => {
-        if(token){
-            setAuthorToken(() => localStorage.getItem('author'))
-            setToken(() => localStorage.getItem('token'))
-        }
-    }, [token, setAuthorToken, setToken])
-
+    useEffect( () => {
+        console.log(Boolean(token) )
+    })
+  
     return (
         <div>
         <AppBar >
@@ -43,10 +38,9 @@ const Nav = () => {
             >
                     BlogMe.com
             </Typography>
-                {/* Handles Login Button Renders*/}
-                { Boolean(!token)    ?  <LoginButtons /> : '' }
-                { (Boolean(authorToken)  && token)?  <AuthorButton/>  : '' }
-                { (Boolean(!authorToken) && token) ?   <LogOutButton />: '' }
+            <SearchBar />
+            { token && <button>Create Post</button> }
+
         </Toolbar>
         </AppBar>
         <Toolbar />

@@ -13,7 +13,9 @@ import SignUp from './pages/logSign/SignUp'
 import Login from './pages/logSign/Login'
 import CreatePost from './pages/createPost/CreatePost'
 import MyPost from './pages/authorPost/MyPost'
-import EditPost from './pages/editPost/EditPost';
+import EditPost from './pages/editPost/EditPost'
+import SearchPage from './pages/searchPage/SearchPage'
+
 
 import { UserContext } from './context/UserContext'
 
@@ -26,6 +28,7 @@ function App() {
         <Switch>
           <Route path="/" exact   component={Home}        />
           <Route path="/blog/:id" component={BlogPost}    />
+          <Route path="/search"   component={SearchPage}  />
           <Route path="/signUp"   component={SignUp}      />
           <Route path="/login"    component={Login}       />
           <Route path="/makePost" render={() => authorToken ? <CreatePost />  : <Home/>}/>
