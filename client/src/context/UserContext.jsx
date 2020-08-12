@@ -13,7 +13,7 @@ const UserContextProvider = (props) => {
     const [ blogEntry, setBlogEntry ] = useState({})
     const [ editBlogEntry, setEditBlogEntry ] = useState({})
     const [ token, setToken ] = useState(localStorage.getItem("token"))
-    const [ useSearch, setUserSearch ] = useState({})
+    const [ userSearch, setUserSearch ] = useState({})
 
 
 
@@ -32,7 +32,7 @@ const UserContextProvider = (props) => {
                 token, setToken,
                 blogEntry, setBlogEntry,
                 editBlogEntry, setEditBlogEntry,
-                useSearch, setUserSearch
+                userSearch, setUserSearch
             }}
         >
             {props.children} 

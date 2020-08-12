@@ -1,0 +1,15 @@
+#search-results{
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 60% 30%;
+}
+
+#search-bar{
+    grid-column: span 3;
+    padding: 0 15vw 0 15vw;
+    border: 1px solid red;
+}
+
+#search-category{
+    border: 1px solid black;
+}

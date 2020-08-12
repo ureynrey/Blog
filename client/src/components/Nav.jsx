@@ -1,13 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AppBar, Toolbar, Typography, InputBase, makeStyles} from '@material-ui/core'
-import MuiAccordion from '@material-ui/core/Accordion';
-import SearchIcon from '@material-ui/icons/Search';
 // import { makeStyles } from '@material-ui/core/styles'
 import './nav.css'
 
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import { UserContext } from '../context/UserContext';
+
+import SearchBar from './SearchBar'
 
 const navStyle = makeStyles({
     root: {
@@ -21,26 +19,13 @@ const navStyle = makeStyles({
 
 const Nav = () => {
     let history = useHistory();
-    const { useSearch, setUserSearch } = useContext(UserContext)
-    const [ searchField, setSearchField ] = useState('')
     const nav = navStyle()
+    const [ token, setToken ] = useState(localStorage.getItem('token') )
 
-
-
-    const onChange = (e) => {
-        e.preventDefault(); 
-        setSearchField(e.target.value)
-        axios.get(`/blog/locate/${e.target.value}`)
-            .then(data => console.log(data))
-            .catch(e => console.warn(e))
-    } 
-
-    const onSubmit = (e) => {
-
-        e.preventDefault()
-        console.log('Hello2')
-    }
-
+    useEffect( () => {
+        console.log(Boolean(token) )
+    })
+  
     return (
         <div>
         <AppBar >
@@ -53,23 +38,8 @@ const Nav = () => {
             >
                     BlogMe.com
             </Typography>
-                <MuiAccordion>
-                    <form 
-                        noValidate
-                        id="search-input" 
-                    >
-                        <SearchIcon />
-                        <InputBase 
-                            placeholder="Search..."
-                            onChange={e => onChange(e)}
-                            onSubmit={e => onSubmit(e)}
-                            />
-                    </form>
-                   
-                </MuiAccordion>
-                {/* Handles Login Button Renders*/}
-            
-                
+            <SearchBar />
+            { token && <button>Create Post</button> }
 
         </Toolbar>
         </AppBar>

@@ -129,9 +129,9 @@ router.patch('/edit/:id', auth, async (req,res) => {
 
 // Returns title and post._id
 router.get('/locate/:key', async (req, res) => {
+    console.log('hit')
     const reply = []
     try{
-        console.log(typeof req.params.key)
         const blog = await Blog.find( 
             //Partial Find using regEX
             //$options ignores capitilization
