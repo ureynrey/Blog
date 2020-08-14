@@ -1,0 +1,26 @@
+#account-nav{
+    border: 1px solid black;
+    height: 100vh;
+    width: 400px;
+    background-color: grey;
+
+}
+
+#account-nav-self{
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+}
+#account-nav-self > img{
+    border-radius: 50%;
+}
+#account-nav-self > div{
+    margin: 0 0 0 16px;
+}
+#account-nav-self > div > h1{
+    font-size: 30px;
+}
+#account-nav-self > div > p{
+    font-size: 20px;
+}
+

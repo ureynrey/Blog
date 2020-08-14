@@ -18,7 +18,7 @@ const CreatePost = () => {
             headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
             data: {...post}
         })
-        .then((x) => history.push(`/blog/${x.data._id}`))
+        .then((data) => history.push(`/blog/${data.data._id}`))
         .catch(e => console.log(e))
     }
 
