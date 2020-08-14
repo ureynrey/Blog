@@ -18,6 +18,7 @@ import SearchPage from './pages/searchPage/SearchPage'
 
 
 import { UserContext } from './context/UserContext'
+import Account from './pages/account/Account';
 
 function App() {
   const { authorToken } = useContext(UserContext)
@@ -31,6 +32,7 @@ function App() {
           <Route path="/search"   component={SearchPage}  />
           <Route path="/signUp"   component={SignUp}      />
           <Route path="/login"    component={Login}       />
+          <Route path="/account"  component={Account}     />
           <Route path="/makePost" render={() => authorToken ? <CreatePost />  : <Home/>}/>
           <Route path="/mypost"   render={() => authorToken ? <MyPost/>       : <Home/>}/>
           <Route path="/edit/:id" render={() => authorToken ? <EditPost/>     : <Home/>}/>

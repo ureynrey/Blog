@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { AppBar, Toolbar, Typography, InputBase, makeStyles} from '@material-ui/core'
-// import { makeStyles } from '@material-ui/core/styles'
+import { AppBar, Toolbar, Typography, makeStyles} from '@material-ui/core'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './nav.css'
 
 import { useHistory } from 'react-router-dom'
@@ -25,6 +25,10 @@ const Nav = () => {
     useEffect( () => {
         console.log(Boolean(token) )
     })
+
+    const handleAccount = () => {
+        history.push('/account')
+    }
   
     return (
         <div>
@@ -38,8 +42,14 @@ const Nav = () => {
             >
                     BlogMe.com
             </Typography>
-            <SearchBar />
+            <SearchBar /> 
             { token && <button>Create Post</button> }
+            { token && 
+                <AccountCircleIcon 
+                    id="account-button"
+                    onClick={handleAccount}
+            />}
+
 
         </Toolbar>
         </AppBar>
